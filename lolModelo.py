@@ -9,8 +9,9 @@ class heroes(models.Model):
 
 class villanos(models.Model):
     _name = 'lol.villanos' #la info se guarda en la tabla lol_villanos
-
+    
     name = fields.Char()
+    debilidades_id = fields.One2many(comodel_name='lol.debilidades', inverse_name='villano_id', string="Debilidades")
     batallas_id = fields.One2many(comodel_name='lol.batallas', inverse_name='villano_id', string="Batallas")
 
 class batallas(models.Model):
@@ -29,5 +30,6 @@ class debilidades(models.Model):
     # add a selection field for skill level
     skill_level = fields.Selection([('easy', 'Easy'), ('medium', 'Medium'), ('hard', 'Hard')])
     heroe_id = fields.Many2one(comodel_name='lol.heroes', string="Heroe")
+    villano_id = fields.Many2one(comodel_name='lol.villanos', string="villano")
 
 
