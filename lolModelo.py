@@ -39,7 +39,7 @@ class Campeon(models.Model):
 class Mapa(models.Model):
     _description = 'Mapas de League of Legends'
     _inherit = 'lol.base'
-
+    #si se quita la propiedad nombre no crea tabla en la base de datos 
     width = fields.Integer(string='Ancho')
     height = fields.Integer(string='Alto')
 
